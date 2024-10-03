@@ -1,16 +1,16 @@
 module.exports = function check(str, bracketsConfig) {
-  const openBrackets = bracketsConfig.map(pair => pair[0]);
-  const pairBrackets = {};
-  bracketsConfig.forEach(pair => {
-    pairBrackets[pair[1]] = pair[0];
-  });
+  const openBrackets = ['(', '{']; 
+  const pairBrackets = {
+    [')']: '(',
+    ['}']: '{',
+  };
 
   function isBracketsOk(str) {
     let stack = [];
 
     for (let i = 0; i < str.length; i++) {
       let currentSymbol = str[i];
-
+      
       if (openBrackets.includes(currentSymbol)) {
         stack.push(currentSymbol);
       } else {
